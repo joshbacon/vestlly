@@ -1,0 +1,10 @@
+{
+  "name": "stock-eval-runtime",
+  "version": "1.0.0",
+  "description": "Live scoring runtime for the stock evaluation pipeline (Stages 2-4, 7)",
+  "main": "src/scoring.js",
+  "scripts": {
+    "parity-check": "node parity_check.js"
+  },
+  "license": "UNLICENSED"
+}

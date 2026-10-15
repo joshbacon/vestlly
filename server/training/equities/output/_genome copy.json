@@ -1,0 +1,27 @@
+{
+  "indicator_weights": {
+    "epsCurrentYear": 0.726,
+    "pegRatio": 0.991,
+    "priceToSalesTrailing12Months": 0.0,
+    "priceToBook": 0.352,
+    "debtToEquity": 0.374,
+    "bookValue": 0.561,
+    "targetMeanPrice": 0.0,
+    "freeCashflow": 0.0,
+    "returnOnEquity": 1.0
+  },
+  "indicator_penalty_scales": {
+    "epsCurrentYear": 0.051,
+    "pegRatio": 0.173,
+    "priceToSalesTrailing12Months": 2.311,
+    "priceToBook": 0.050,
+    "debtToEquity": 4.944,
+    "bookValue": 1.690,
+    "targetMeanPrice": 1.240,
+    "freeCashflow": 3.329,
+    "returnOnEquity": 0.050
+  },
+  "reversion_window": 82,
+  "reversion_weight": 0.042,
+  "signal_threshold": 0.402
+}

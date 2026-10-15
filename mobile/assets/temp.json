@@ -1,0 +1,125 @@
+{
+    "accounts": [
+        {
+            "balance": {
+                "total": {
+                    "amount": 155.67,
+                    "currency": "CAD"
+                }
+            },
+            "brokerage_authorization": "b62b1a24-e202-4d80-ac01-0efe584a82f7",
+            "cash_restrictions": [],
+            "created_date": "2026-01-28T20:47:27.491792Z",
+            "funding_date": null,
+            "id": "85f1f67c-9b20-4379-a525-ea473dfee670",
+            "institution_name": "Wealthsimple Trade",
+            "is_paper": false,
+            "meta": {
+                "currency": "CAD",
+                "institution_name": "Wealthsimple Trade",
+                "status": "open",
+                "type": "non_registered",
+                "unifiedAccountType": "SELF_DIRECTED_NON_REGISTERED"
+            },
+            "name": "Wealthsimple Trade PERSONAL",
+            "number": "non-registered-I2_3J5FjQw",
+            "opening_date": null,
+            "portfolio_group": "fccc00da-96f2-4e6a-a3b5-15e5b1466a64",
+            "raw_data": null,
+            "raw_type": "PERSONAL",
+            "status": "open",
+            "sync_status": {
+                "holdings": {
+                    "initial_sync_completed": true,
+                    "last_successful_sync": "2026-02-21T08:43:28.113861+00:00"
+                },
+                "transactions": {
+                    "first_transaction_date": "2026-01-28",
+                    "initial_sync_completed": true,
+                    "last_successful_sync": "2026-02-20"
+                }
+            }
+        },
+        {
+            "balance": {
+                "total": {
+                    "amount": 145.75979059,
+                    "currency": "CAD"
+                }
+            },
+            "brokerage_authorization": "b62b1a24-e202-4d80-ac01-0efe584a82f7",
+            "cash_restrictions": [],
+            "created_date": "2026-02-02T08:19:17.401541Z",
+            "funding_date": null,
+            "id": "10c4765a-c3bd-40cf-9c78-fb0d2a024897",
+            "institution_name": "Wealthsimple Trade",
+            "is_paper": false,
+            "meta": {
+                "currency": "CAD",
+                "institution_name": "Wealthsimple Trade",
+                "status": "open",
+                "type": "non_registered_crypto",
+                "unifiedAccountType": "SELF_DIRECTED_CRYPTO"
+            },
+            "name": "Wealthsimple Trade CRYPTO",
+            "number": "non-registered-crypto-BNeAxiUGTw",
+            "opening_date": null,
+            "portfolio_group": "9d1d6f5f-5f02-4deb-bfc1-6dff469bf77b",
+            "raw_data": null,
+            "raw_type": "CRYPTO",
+            "status": "open",
+            "sync_status": {
+                "holdings": {
+                    "initial_sync_completed": true,
+                    "last_successful_sync": "2026-02-21T08:43:29.313767+00:00"
+                },
+                "transactions": {
+                    "first_transaction_date": "2026-02-12",
+                    "initial_sync_completed": true,
+                    "last_successful_sync": "2026-02-20"
+                }
+            }
+        },
+        {
+            "balance": {
+                "total": {
+                    "amount": 0.0,
+                    "currency": "CAD"
+                }
+            },
+            "brokerage_authorization": "b62b1a24-e202-4d80-ac01-0efe584a82f7",
+            "cash_restrictions": [],
+            "created_date": "2026-01-28T20:47:27.495583Z",
+            "funding_date": null,
+            "id": "972bed0b-240d-4f0b-9567-6283ab96bf1f",
+            "institution_name": "Wealthsimple Trade",
+            "is_paper": false,
+            "meta": {
+                "currency": "CAD",
+                "institution_name": "Wealthsimple Trade",
+                "status": "open",
+                "type": "ca_cash_msb",
+                "unifiedAccountType": "CASH"
+            },
+            "name": "Wealthsimple Trade MSB",
+            "number": "ca-cash-msb-UocPORWyzQ",
+            "opening_date": null,
+            "portfolio_group": "046fc520-a249-4de6-8fc0-194bd0ed0f55",
+            "raw_data": null,
+            "raw_type": "MSB",
+            "status": "open",
+            "sync_status": {
+                "holdings": {
+                    "initial_sync_completed": true,
+                    "last_successful_sync": "2026-02-21T08:43:26.768821+00:00"
+                },
+                "transactions": {
+                    "first_transaction_date": "2026-01-28",
+                    "initial_sync_completed": true,
+                    "last_successful_sync": "2026-02-20"
+                }
+            }
+        }
+    ],
+    "status": 200
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "f457d1a1-4cad-4450-86de-55288c02ae36",
+    "name": "TFSA",
+    "tickers": [
+      "BCE.TO",
+      "BMO.TO",
+      "CM.TO",
+      "ENB.TO",
+      "MFC.TO",
+      "POW.TO",
+      "PXT.TO"
+    ],
+    "createdAt": "2026-08-25T16:42:35.926Z"
+  },
+  {
+    "id": "ed135335-fd14-4478-ba79-121b108a8e97",
+    "name": "FHSA",
+    "tickers": [
+      "WCP.TO"
+    ],
+    "createdAt": "2026-08-25T16:49:45.291Z"
+  },
+  {
+    "id": "86a1326d-118a-4607-8a22-b31e1aa1ac01",
+    "name": "RRSP",
+    "tickers": [
+      "SU.TO"
+    ],
+    "createdAt": "2026-08-25T16:49:51.728Z"
+  },
+  {
+    "id": "ea837ec0-71aa-47bc-853a-94e3619433e2",
+    "name": "All",
+    "tickers": [
+      "AGI.TO",
+      "BCE.TO",
+      "BMO.TO",
+      "BNS.TO",
+      "BTE.TO",
+      "CJ.TO",
+      "CM.TO",
+      "CNQ.TO",
+      "DPM.TO",
+      "ENB.TO",
+      "FTS.TO",
+      "IMG.TO",
+      "MFC.TO",
+      "NA.TO",
+      "OLA.TO",
+      "POW.TO",
+      "PPL.TO",
+      "PPTA.TO",
+      "PXT.TO",
+      "RUS.TO",
+      "RY.TO",
+      "SKE.TO",
+      "SLF.TO",
+      "SU.TO",
+      "T.TO",
+      "TD.TO",
+      "TF.TO",
+      "TRP.TO",
+      "TXG.TO",
+      "WCP.TO",
+      "X.TO"
+    ],
+    "createdAt": "2026-08-25T17:12:02.430Z"
+  },
+  {
+    "id": "1a265f8d-09cb-4793-8f3e-b7837d6db9b0",
+    "name": "Banks",
+    "tickers": [
+      "BMO.TO",
+      "BNS.TO",
+      "CM.TO",
+      "NA.TO",
+      "RY.TO",
+      "TD.TO"
+    ],
+    "createdAt": "2026-08-26T14:30:38.299Z"
+  }
+]

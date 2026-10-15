@@ -1,0 +1,47 @@
+{
+    "basic-materials": {
+        "under_reward": 1.0015005878974357,
+        "over_pen_base": 1.8939653726340624,
+        "over_pen_exp": 4.0,
+        "sd_threshold": 3.33755812435811,
+        "sd_weight": 0.1858249609807232,
+        "sd_direction": 1.0,
+        "action_threshold": 0.3547930753727298
+    },
+    "communication-services": {
+        "under_reward": 1.5487705201427875,
+        "over_pen_base": 4.0,
+        "over_pen_exp": 0.5,
+        "sd_threshold": 0.5493812140081378,
+        "sd_weight": 0.0,
+        "sd_direction": -1.0,
+        "action_threshold": 0.08188580744989404
+    },
+    "energy": {
+        "under_reward": 0.959596865985109,
+        "over_pen_base": 4.0,
+        "over_pen_exp": 0.5,
+        "sd_threshold": 0.9966606282960194,
+        "sd_weight": 0.0,
+        "sd_direction": -1.0,
+        "action_threshold": 0.13235645297392443
+    },
+    "financial-services": {
+        "under_reward": 0.7750143304322908,
+        "over_pen_base": 3.9908039752132196,
+        "over_pen_exp": 2.063051518152892,
+        "sd_threshold": 1.761614222308351,
+        "sd_weight": 0.0470779669054578,
+        "sd_direction": 1.0,
+        "action_threshold": 0.3054539906964545
+    },
+    "industrials": {
+        "under_reward": 1.4034912426148634,
+        "over_pen_base": 0.5,
+        "over_pen_exp": 4.0,
+        "sd_threshold": 3.655636791571043,
+        "sd_weight": 0.19225181959114251,
+        "sd_direction": 1.0,
+        "action_threshold": 0.3920457242344378
+    }
+}
