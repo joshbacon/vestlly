@@ -75,8 +75,9 @@ class StateManager extends ChangeNotifier {
   Future<int> fetchStockData() async {
     var response;
     try {
+      const path = String.fromEnvironment('STOCK_DATA_ENDPOINT');
       response = await http.get(
-        Uri.parse(String.fromEnvironment('STOCK_DATA_ENDPOINT'));
+        Uri.parse(path)
       ).timeout(const Duration(seconds: 20));
     } on TimeoutException {
       notifyListeners();
@@ -110,9 +111,11 @@ class StateManager extends ChangeNotifier {
 
   Future<int> fetchSTData() async {
     var response;
+    print("~~~~~~~~~~~~~~~~~THIS IS WHERE YOU WANT TO BE LOOKING AT~~~~~~~~~~~~~~~~");
     try {
+      const path = String.fromEnvironment('ACCOUNT_DATA_ENDPOINT');
       response = await http.get(
-        Uri.parse(String.fromEnvironment('ACCOUNT_DATA_ENDPOINT'));
+        Uri.parse(path)
       ).timeout(const Duration(seconds: 20));
     } on TimeoutException {
       notifyListeners();
@@ -133,22 +136,22 @@ class StateManager extends ChangeNotifier {
     double updatedWithdrawal = 0.0;
 
     double tempTotal;
+    double cash;
     for (final account in data['accounts']) {
-      print(account);
       tempTotal = account['cash']['amount'].toDouble();
-      if (account['holdings'].length > 0) {
-        for (final h in account['holdings']) {
-          database.insertHolding(Holding(
-            account_id: account['id'],
-            holding_id: h['id'],
-            ticker: h['symbol']['symbol']['symbol'],
-            avgPrice: h['average_purchase_price'],
-            marketPrice: h['price'],
-            shares: h['fractional_units'],
-            imgURL: h['symbol']['symbol']['logo_url'],
-          ));
-          tempTotal += h['fractional_units'] * h['price'];
-        }
+      cash = tempTotal;
+      // print(account);
+      for (final h in account['holdings']) {
+        database.insertHolding(Holding(
+          account_id: account['id'],
+          holding_id: h['symbol']['id'],
+          ticker: h['symbol']['symbol']['symbol'],
+          avgPrice: h['average_purchase_price'],
+          marketPrice: h['price'],
+          shares: h['units'],
+          imgURL: h['symbol']['symbol']['logo_url'],
+        ));
+        cash -= h['units'] * h['price'];
       }
       if (account['orders'].length > 0) {
         for (final o in account['orders']) {
@@ -198,7 +201,7 @@ class StateManager extends ChangeNotifier {
         account_id: account['id'],
         type: account['type'],
         name: account['name'].substring(account['institution'].length+1),
-        cash: account['cash']['amount'].toDouble(),
+        cash: cash,
         value: tempTotal,
         institution: account['institution'],
         performance: perf,

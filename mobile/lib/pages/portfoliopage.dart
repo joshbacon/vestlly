@@ -156,6 +156,18 @@ class _PortfolioPageState extends State<PortfolioPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      children: [
+                        Spacer(),
+                        Text(StateManager.currencyFormater.format(7)),
+                        Text(
+                          "   Cash",
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ]
+                    ),
                     Text(
                       "   Holdings",
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
