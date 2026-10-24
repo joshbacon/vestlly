@@ -6,6 +6,7 @@ import 'package:vestlly/models/holding.dart';
 import 'package:vestlly/models/order.dart';
 import 'package:vestlly/models/trade.dart';
 import 'package:vestlly/models/stock.dart';
+import 'package:vestlly/widgets/scheduler.dart';
 import 'package:vestlly/widgets/stockcard.dart';
 import 'package:vestlly/widgets/holdingcard.dart';
 import 'package:vestlly/widgets/ordercard.dart';
@@ -35,6 +36,8 @@ class _PortfolioPageState extends State<PortfolioPage> {
   int _bottomNavIndex = 0;
   bool sortToggle = false;
 
+  // create a model for a schedule,
+  // - include a toggle variable
 
   @override
   Widget build(BuildContext context) {
@@ -361,13 +364,160 @@ class _PortfolioPageState extends State<PortfolioPage> {
           ]
         )
       ),
+      Padding( // Account Automations
+        padding: EdgeInsets.fromLTRB(15.0, 35.0, 15.0, 50.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ElevatedButton(
+              onPressed: Navigator.of(context).pop,
+              child: const Icon(Icons.arrow_back),
+            ),
+            SizedBox(height: 5.0),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: 10.0,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Automated trades are currently"),
+                        Text("ON", style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),),
+                      ],
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // TODO: wire up the toggle with the schedule model
+                        showDialog<void>(
+                          context: context,
+                          barrierDismissible: false, // user must tap button!
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Toggle Trading'),
+                              content: const SingleChildScrollView(
+                                child: ListBody(
+                                  children: <Widget>[
+                                    Text('Are you sure?'),
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, false),
+                                  child: Text('Nevermind', style: TextStyle(color: Theme.of(context).colorScheme.primary.withAlpha(120))),
+                                ),
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, true),
+                                  child: const Text('Start', style: TextStyle(color:Colors.lightGreen)),
+                                  // child: const Text('Halt', style: TextStyle(color:Colors.red)),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      style: ButtonStyle(
+                        fixedSize: WidgetStateProperty.all(Size(256, 64)),
+                        // iconColor: WidgetStateProperty.all(Colors.lightGreen),
+                        // backgroundColor: WidgetStateProperty.all(Colors.lightGreenAccent),
+                        iconColor: WidgetStateProperty.all(Colors.red),
+                        backgroundColor: WidgetStateProperty.all(const Color.fromARGB(61, 255, 82, 82)),
+                      ),
+                      child: Icon(
+                        // Icons.play_arrow_rounded,
+                        Icons.back_hand,
+                        // size: 48,
+                        size: 28,
+                      ),
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Scheduling",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        )
+                      ]
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("Mon, Thu, Fri at 11:00 AM"),
+                      ]
+                    ),
+                    Scheduler(value: {"startTime": "9:15AM"}, selected: () {},),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Stock Pool",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        )
+                      ]
+                    ),
+                    // TODO: have a checklist of the stocks that are considered on each run
+                    FutureBuilder<List<Map<String, dynamic>>>(
+                      future: database.getStocks(sortToggle ? "score ASC" : "score DESC", widget.data.account_id),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(child: CircularProgressIndicator());
+                        }
+                        if (snapshot.hasError) {
+                          return Center(child: Text('Error: ${snapshot.error}'));
+                        }
+                        final stocks = snapshot.data ?? [];
+                        if (stocks.isEmpty) {
+                          return const Center(child: Text('No stock data found.'));
+                        }
+                        return Column(
+                          children: [
+                            // TODO: group these by sector
+                            // - put in grid view, one card per sector
+                            for (final stock in stocks)  
+                              Row(
+                                children: [
+                                  Checkbox(value: false, onChanged: (_) {}),
+                                  Text(stock['ticker']),
+                                ],
+                              ),
+                          ],
+                        );
+                        // return Expanded(
+                        //   child: MasonryGridView.count(
+                        //     crossAxisCount: 2,
+                        //     mainAxisSpacing: 4,
+                        //     crossAxisSpacing: 4,
+                        //     itemCount: stocks.length,
+                        //     itemBuilder: (context, index) {
+                        //       return StockCard(Stock.fromMap(stocks[index]));
+                        //     }
+                        //   )
+                        // );
+                      },
+                    ),
+                  ]
+                )
+              )
+            )
+          ],
+        ),
+      ),
     ];
     
     return Scaffold(
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: [Icons.home, Icons.receipt, Icons.shopping_cart],
+        icons: [Icons.home, Icons.receipt, Icons.candlestick_chart_sharp, Icons.settings_suggest],
         activeIndex: _bottomNavIndex,
         gapLocation: GapLocation.none,
         notchSmoothness: NotchSmoothness.verySmoothEdge,

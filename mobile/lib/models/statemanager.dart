@@ -111,7 +111,6 @@ class StateManager extends ChangeNotifier {
 
   Future<int> fetchSTData() async {
     var response;
-    print("~~~~~~~~~~~~~~~~~THIS IS WHERE YOU WANT TO BE LOOKING AT~~~~~~~~~~~~~~~~");
     try {
       const path = String.fromEnvironment('ACCOUNT_DATA_ENDPOINT');
       response = await http.get(
@@ -140,7 +139,6 @@ class StateManager extends ChangeNotifier {
     for (final account in data['accounts']) {
       tempTotal = account['cash']['amount'].toDouble();
       cash = tempTotal;
-      // print(account);
       for (final h in account['holdings']) {
         database.insertHolding(Holding(
           account_id: account['id'],
